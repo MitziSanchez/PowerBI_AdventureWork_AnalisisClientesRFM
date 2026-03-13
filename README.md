@@ -3,12 +3,12 @@
 ## Descripción del proyecto
 Este proyecto presenta un análisis de clientes RFM (Recency, Monetary y Frequency) de la base de datos [**AdventureWork2019**](https://learn.microsoft.com/es-es/sql/samples/adventureworks-install-configure?view=sql-server-ver17&tabs=ssms)  (Venta de bicicletas y accesorios) de Microsoft.
 
-- **Recency:** Recencia, corresponde al tiempo transcurrido desde la última compra realizada por el cliente. Para este proyecto, representado en días.
-- **Frequency:** Frecuencia, corresponde a la frecuencia de compra realizada por los clientes en un periodo de tiempo determinado.
-- **Monetary:** Valor del cliente, corresponde al total de valor monetario de las compras realizadas por el cliente en un periodo determinado.
+- **Recency:** Recencia, corresponde al tiempo transcurrido desde la última compra realizada por el cliente. (En este proyecto se representa en días).
+- **Frequency:** Frecuencia, corresponde a la frecuencia de compra realizada por los clientes en un período de tiempo determinado.
+- **Monetary:** Valor del cliente, corresponde al total de valor monetario de las compras realizadas por el cliente en un período determinado.
 
 ## Objetivos del proyecto
-- Realizar un análisis RFM de clientes en base a la data disponible del último año.
+- Realizar un análisis RFM de clientes en base a los datos disponible del último año.
     - Calcular Recency y clasificar en estados.
     - Calcular Monetary y clasificar en estados.
     - Calcular Frequency y clasificar en estados.
@@ -24,7 +24,7 @@ Este proyecto presenta un análisis de clientes RFM (Recency, Monetary y Frequen
 ## Modelo de Datos Análitico
 Modelo basado en esquema estrella compuesto por:
 
-- **FactCustomerMonthly:** Concentración de data de los clientes de los últimos 12 periodos (Cada periodo considera un mes, desde último periodo con ventas hacia atras). Considera fechas de primera y última venta, cantidad de ordenes y valor monetario total de ventas realizadas a cada cliente por cada periodo.
+- **FactCustomerMonthly:** Concentración de datos de los clientes de los últimos 12 períodos (Cada período representa un mes). Considera fechas de primera y última venta, cantidad de ordenes y valor monetario de total de ventas realizadas a cada cliente.
 - **DimCustomerRFM:** Datos complementarios de clientes.
 - **DimTerritoryRFM:** Datos complementarios de territorios geográficos. (Ubicación de los clientes)
 - **DimDateRFM:** Datos complementarios de fechas de venta.
@@ -33,10 +33,10 @@ Modelo basado en esquema estrella compuesto por:
 - Creación de nueva tabla mediante DAX para mantener un registro general del último año de cada cliente. Se incorpora la suma total de cantidad de ordenes y valor de venta total del último año.
 - Se determinan niveles para clasificar a los clientes de acuerdo al total de Monetary y Frequency.
 - Obtención de la última fecha de venta desde la tabla de hechos FactCustomerMonthly.
-- Calculo de recency en días desde la última fecha de venta registrada del cliente hasta la fecha de corte (última fecha de venta disponible de todo el set de datos).
+- Calculo de Recency en días desde la última fecha de venta registrada del cliente hasta la fecha de corte (última fecha de venta disponible de todo el set de datos).
 - Se determinan niveles de Recency por medio de quintiles.
-- Se clasifica considerando las combinaciones de las 3 variables RFM.
-- Se generan gráficas para visualizar la data cruzando Recency y Monetary. Es decir, la visualización de los niveles de Recency y el valor Monetary que representan esos clientes.
+- Se clasifica a los clientes considerando las combinaciones de las 3 variables RFM.
+- Se generan gráficas para visualizar los datos de acuerdo a los niveles de Recency y el valor Monetary.
     - Se muestra por cada nivel de Recency, el total de Monetary representado para esos clientes.
     - Se incorpora gráfica para mostrar la diferencia del valor de ticket promedio de los niveles de Recency.
     - Gráfica para visualizar por cada nivel de Recency la distribución de acuerdo al nivel de Monetary.
@@ -44,7 +44,7 @@ Modelo basado en esquema estrella compuesto por:
     - Mostrar la cantidad de clientes distribuidas por cada nivel de Frequency y Monetary, por medio de una matriz.
     - Mostrar el porcentaje de clientes por cada nivel de Frequency.
     - Mostrar el total de Monetary en base a los niveles de Monetary.
-- Generación del visual de analisis de RFM.
+- Generación del visual de análisis de RFM.
     - Se genera tabla que permita visualizar por cada nivel de RFM el total de clientes, más el porcentaje total de clientes, Monetary total, porcentaje de Monetary del total y el valor de ticket promedio.
     - Se incorpora gráfica que permita ver el valor de Monetary por cada nivel RFM.
     - Se incorpora gráfica para visualizar la cantidad total de clientes clasificados de acuerdo al nivel RFM.
