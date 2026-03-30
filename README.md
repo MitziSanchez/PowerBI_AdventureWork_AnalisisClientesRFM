@@ -9,11 +9,9 @@ Este proyecto presenta un análisis de clientes RFM (Recency, Monetary y Frequen
 
 ## Objetivos del proyecto
 - Realizar un análisis RFM de clientes en base a los datos disponible del último año.
-    - Calcular Recency y clasificar en estados.
-    - Calcular Monetary y clasificar en estados.
-    - Calcular Frequency y clasificar en estados.
-    - Generar escala de niveles RFM considerando los estados definidos por cada una de las variables.
-    - Generar gráficas para visualizar la distribución de clientes en base a la clasificación RFM. Permitiendo filtrar por tipo de cliente y la zona geográfica de ubicacion de estos.
+    - Calcular Recency, monetary y frequency. Clasificar en estados.
+    - Generar escala de niveles RFM considerando el cruce de las variables anteriores.
+    - Generar gráficas para visualizar la distribución de clientes y la concentración de ingresos por venta que representan en base a la clasificación RFM. 
 
 ## Stack Tecnológico
 - SQL Server
@@ -24,7 +22,7 @@ Este proyecto presenta un análisis de clientes RFM (Recency, Monetary y Frequen
 ## Modelo de Datos Análitico
 Modelo basado en esquema estrella compuesto por:
 
-- **FactCustomerMonthly:** Concentración de datos de los clientes de los últimos 12 períodos (Cada período representa un mes). Considera fechas de primera y última venta, cantidad de ordenes y valor monetario de total de ventas realizadas a cada cliente.
+- **FactCustomerMonthly:** Resumen de los últimos 12 períodos de las ventas de los clientes (Cada período considera un mes, desde último período con ventas hacia atrás). Considera fechas de primera y última venta, cantidad de ordenes y valor monetario del total de ventas realizadas a cada cliente por cada período.
 - **DimCustomerRFM:** Datos complementarios de clientes.
 - **DimTerritoryRFM:** Datos complementarios de territorios geográficos. (Ubicación de los clientes)
 - **DimDateRFM:** Datos complementarios de fechas de venta.
@@ -36,15 +34,15 @@ Modelo basado en esquema estrella compuesto por:
 - Calculo de Recency en días desde la última fecha de venta registrada del cliente hasta la fecha de corte (última fecha de venta disponible de todo el set de datos).
 - Se determinan niveles de Recency por medio de quintiles.
 - Se clasifica a los clientes considerando las combinaciones de las 3 variables RFM.
-- Se generan gráficas para visualizar los datos de acuerdo a los niveles de Recency y el valor Monetary.
-    - Se muestra por cada nivel de Recency, el total de Monetary representado para esos clientes.
+- Se generan gráficas para visualizar los datos de acuerdo a los niveles de Recency y el valor Monetary. Es decir, la visualización de los niveles de recencia y el valor monetario que representan  
+    - Se muestra la monetary total por cada nivel de recency.
     - Se incorpora gráfica para mostrar la diferencia del valor de ticket promedio de los niveles de Recency.
-    - Gráfica para visualizar por cada nivel de Recency la distribución de acuerdo al nivel de Monetary.
+    - Gráfica para visualizar la distribución porcentual de la monetary total de cada estado de recency, de acuerdo a los niveles de monetary.
 -  Se generan gráficas para analizar Frequency y Monetary. Es decir, la visualización de la frecuencia de ventas realizadas a los clientes y el valor monetario que representan.
-    - Mostrar la cantidad de clientes distribuidas por cada nivel de Frequency y Monetary, por medio de una matriz.
+    - Mostrar la cantidad de clientes distribuidos por cada nivel de Frequency y Monetary, por medio de una matriz.
     - Mostrar el porcentaje de clientes por cada nivel de Frequency.
     - Mostrar el total de Monetary en base a los niveles de Monetary.
-- Generación del visual de análisis de RFM.
+- Generación del visual de análisis de RFM (Cruce de las 3 variables).
     - Se genera tabla que permita visualizar por cada nivel de RFM el total de clientes, más el porcentaje total de clientes, Monetary total, porcentaje de Monetary del total y el valor de ticket promedio.
     - Se incorpora gráfica que permita ver el valor de Monetary por cada nivel RFM.
     - Se incorpora gráfica para visualizar la cantidad total de clientes clasificados de acuerdo al nivel RFM.
@@ -56,12 +54,18 @@ Modelo basado en esquema estrella compuesto por:
 >Dentro del proyecto puede encontrar un archivo PDF con las páginas del informe de Power BI.
 >
 
-<img width="1414" height="790" alt="image" src="https://github.com/user-attachments/assets/0f8896e1-88f3-4f58-a073-c2465a6be8da" />
-<img width="1413" height="792" alt="image" src="https://github.com/user-attachments/assets/b088ffe8-50d1-4393-aff6-33a920ae3633" />
-<img width="1396" height="791" alt="image" src="https://github.com/user-attachments/assets/80fc89d5-4f27-4188-9934-921c81a3313c" />
-<img width="1409" height="786" alt="image" src="https://github.com/user-attachments/assets/b0954f7e-edd4-40b5-81da-17f2b79c3630" />
-<img width="1413" height="784" alt="image" src="https://github.com/user-attachments/assets/cd170c1f-e861-48a5-9dcc-15167e3305ab" />
-<img width="1411" height="787" alt="image" src="https://github.com/user-attachments/assets/8752fd3f-28d6-4eb2-9e51-0f8f90c2f1be" />
+<img width="1409" height="791" alt="image" src="https://github.com/user-attachments/assets/b38cd7a5-5544-4089-9ccd-a2abe4755187" />
+<img width="1410" height="794" alt="image" src="https://github.com/user-attachments/assets/4efde629-fe93-48aa-96ba-bd1e0d60e638" />
+<img width="1398" height="786" alt="image" src="https://github.com/user-attachments/assets/38b52aa5-bb4b-47b7-a209-38bfa40953b4" />
+<img width="1414" height="784" alt="image" src="https://github.com/user-attachments/assets/68ef0d2b-504c-4213-9f5d-978ebff666f4" />
+<img width="1415" height="789" alt="image" src="https://github.com/user-attachments/assets/93d8de47-2194-4ac6-9187-90f13e470fbd" />
+<img width="1413" height="794" alt="image" src="https://github.com/user-attachments/assets/21eb4975-50fb-450f-b4d4-79226a580098" />
+
+
+
+
+
+
 
 
 
